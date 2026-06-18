@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usha Kale — Azure Data Engineer & Cloud DBA</title>
+<meta name="description" content="Senior Azure Data Engineer and Cloud DBA with 15+ years in banking and financial services. Builder of SQLMigratePlus AI migration agent and Banking Lakehouse on Databricks.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #3C3489;
+    --purple-mid: #534AB7;
+    --purple-light: #EEEDFE;
+    --orange: #D85A30;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --gold: #FAC775;
+    --gold-dark: #633806;
+    --white: #ffffff;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E9ECEF;
+    --gray-400: #868E96;
+    --gray-600: #495057;
+    --gray-800: #212529;
+    --font: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--gray-800);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--purple);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--gray-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--purple) 0%, #6B4FAF 40%, var(--orange) 70%, var(--teal) 100%);
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    font-family: var(--mono);
+  }
+
+  .hero-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat {
+    text-align: left;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    font-family: var(--mono);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  .hero-certs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .cert-badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-family: var(--mono);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--gold-dark);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.9; }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+
+  .section-inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--purple-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    font-family: var(--mono);
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--gray-600);
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  /* PROJECT CARDS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(60,52,137,0.12);
+  }
+
+  .project-header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .project-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .icon-purple { background: var(--purple-light); }
+  .icon-teal { background: var(--teal-light); }
+  .icon-orange { background: #FAECE7; }
+
+  .project-meta { flex: 1; }
+
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+  }
+
+  .project-subtitle {
+    font-size: 13px;
+    color: var(--gray-400);
+    font-family: var(--mono);
+  }
+
+  .project-body { padding: 0 1.5rem 1.5rem; }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .project-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .p-stat {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .p-stat-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--purple);
+    font-family: var(--mono);
+    line-height: 1;
+  }
+
+  .p-stat-label {
+    font-size: 10px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 3px;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--purple-light);
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: var(--mono);
+  }
+
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+  .tag-orange { background: #FAECE7; color: var(--orange); }
+
+  /* SKILLS */
+  .skills-section { background: var(--gray-50); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .skill-category {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--purple-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    font-family: var(--mono);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-list li {
+    font-size: 14px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--purple-mid);
+    flex-shrink: 0;
+  }
+
+  /* INSIGHTS */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .insight-card {
+    border-left: 4px solid var(--purple);
+    padding: 1.25rem 1.5rem;
+    background: var(--gray-50);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .insight-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--purple);
+    font-family: var(--mono);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .insight-desc {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  .insight-source {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 6px;
+    font-family: var(--mono);
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    background: var(--purple-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-800);
+    font-family: var(--mono);
+  }
+
+  .cert-full {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 2px;
+  }
+
+  .cert-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+
+  .status-held { background: var(--teal-light); color: var(--teal); }
+  .status-progress { background: #FAEEDA; color: #854F0B; }
+
+  /* CONTACT */
+  .contact-section {
+    background: linear-gradient(135deg, var(--purple) 0%, #6B4FAF 50%, var(--teal) 100%);
+    color: #fff;
+  }
+
+  .contact-section .section-title { color: #fff; }
+  .contact-section .section-desc { color: rgba(255,255,255,0.8); }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-family: var(--mono);
+  }
+
+  .contact-link:hover { background: rgba(255,255,255,0.25); }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-800);
+    color: var(--gray-400);
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">~/sqlmigrateplus</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="hero-dot"></div>
+      Open to Senior DE / Cloud DBA roles — Remote & Bay Area
+    </div>
+    <h1>Usha Kale<br><span>Azure Data Engineer</span><br>& Cloud DBA</h1>
+    <p class="hero-tagline">Building secure, scalable data platforms for banking and financial services</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years in Banking</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">250+</div>
+        <div class="stat-label">SQL Server Instances</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2.26M</div>
+        <div class="stat-label">Rows in Lakehouse</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Azure Certifications</div>
+      </div>
+    </div>
+
+    <div class="hero-certs">
+      <span class="cert-badge">AZ-104</span>
+      <span class="cert-badge">DP-300</span>
+      <span class="cert-badge">AZ-305</span>
+      <span class="cert-badge">San Ramon, CA</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="mailto:UshaKalecloudDba@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://linkedin.com/in/ushakale-56a336a" target="_blank" class="btn-outline">LinkedIn</a>
+      <a href="https://github.com/ushakaleclouddba-design/Azure-Data-Engineering-Portfolio" target="_blank" class="btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">What I have built</h2>
+    <p class="section-desc">Production-grade data engineering projects built on Azure, Databricks, and the Claude API — all validated end-to-end in lab and cloud environments.</p>
+
+    <div class="projects-grid">
+
+      <!-- SQLMigratePlus -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-purple">⚡</div>
+          <div class="project-meta">
+            <div class="project-title">SQLMigratePlus</div>
+            <div class="project-subtitle">AI Migration Agent · v0.9</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">End-to-end AI agent automating SQL Server-to-Azure migrations across 5 stages: Assess → Decide → Migrate → Handoff → Day-to-Day Ops. Built with Claude API, PowerShell ReAct loop, and anti-hallucination grounding. The only migration tool with an automated Handoff stage that generates connection strings and migration receipts for app teams.</p>
+          <div class="project-stats">
+            <div class="p-stat">
+              <div class="p-stat-num">5</div>
+              <div class="p-stat-label">Stages</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">11</div>
+              <div class="p-stat-label">Excel sheets TCO</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">2</div>
+              <div class="p-stat-label">Migration paths</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Claude API</span>
+            <span class="tag">PowerShell</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Azure CLI</span>
+            <span class="tag">SQL Server</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banking Lakehouse -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-teal">🏦</div>
+          <div class="project-meta">
+            <div class="project-title">Banking Lakehouse Sprint</div>
+            <div class="project-subtitle">Databricks · Unity Catalog · June 2026</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">End-to-end Banking Lakehouse on Databricks Free Edition — 2.26M Lending Club consumer loans and 962K HMDA California mortgage applications. Full Bronze/Silver/Gold medallion architecture with Unity Catalog governance, Delta Lake CDC, time travel, Lakeflow Jobs orchestration, and Claude API AI risk narrative generation.</p>
+          <div class="project-stats">
+            <div class="p-stat">
+              <div class="p-stat-num">2.26M</div>
+              <div class="p-stat-label">Loan records</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">11</div>
+              <div class="p-stat-label">Notebooks</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">2m39s</div>
+              <div class="p-stat-label">Full pipeline</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag-teal tag">Databricks</span>
+            <span class="tag-teal tag">PySpark</span>
+            <span class="tag-teal tag">Delta Lake</span>
+            <span class="tag-teal tag">Unity Catalog</span>
+            <span class="tag-teal tag">Claude API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADF Medallion -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-orange">🔄</div>
+          <div class="project-meta">
+            <div class="project-title">ADF Medallion Pipeline</div>
+            <div class="project-subtitle">Azure Data Factory · 8 POCs</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">End-to-end Medallion Architecture on Azure Data Factory — Bronze/Silver/Gold layers on ADLS Gen2, SHIR ingestion from on-premises SQL Server, Mapping Data Flows, Key Vault Managed Identity, SOX audit trail, ForEach orchestration, GitHub CI/CD, and Azure Monitor alerting. Fully validated across 8 POCs.</p>
+          <div class="project-stats">
+            <div class="p-stat">
+              <div class="p-stat-num">8</div>
+              <div class="p-stat-label">POCs built</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">25M+</div>
+              <div class="p-stat-label">Rows processed</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">3</div>
+              <div class="p-stat-label">Layer medallion</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag-orange tag">ADF</span>
+            <span class="tag-orange tag">ADLS Gen2</span>
+            <span class="tag-orange tag">SHIR</span>
+            <span class="tag-orange tag">Key Vault</span>
+            <span class="tag-orange tag">GitHub CI/CD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SQL MI Migration -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon icon-purple">☁️</div>
+          <div class="project-meta">
+            <div class="project-title">SQL Server → Azure Migration</div>
+            <div class="project-subtitle">DMS · LRS · Azure Migrate</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Migrated 14 banking databases to Azure SQL Managed Instance via DMS with zero data loss. Separately migrated 141,050 rows via Log Replay Service with 100% row count parity. Deployed SSISDB on MI and validated SSIS package execution via Azure-SSIS IR. Azure Migrate assessment showing 87% PaaS readiness and $60K annual savings.</p>
+          <div class="project-stats">
+            <div class="p-stat">
+              <div class="p-stat-num">14</div>
+              <div class="p-stat-label">DBs migrated</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">141K</div>
+              <div class="p-stat-label">Rows via LRS</div>
+            </div>
+            <div class="p-stat">
+              <div class="p-stat-num">$60K</div>
+              <div class="p-stat-label">Annual savings</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Azure SQL MI</span>
+            <span class="tag">DMS</span>
+            <span class="tag">LRS</span>
+            <span class="tag">SSIS</span>
+            <span class="tag">Azure Migrate</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BANKING INSIGHTS -->
+<section id="insights" style="background: var(--gray-50);">
+  <div class="section-inner">
+    <div class="section-label">Banking Domain Expertise</div>
+    <h2 class="section-title">What the data revealed</h2>
+    <p class="section-desc">Real findings from the Banking Lakehouse sprint — demonstrating data engineering skills alongside banking domain knowledge.</p>
+
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-num">57.6%</div>
+        <div class="insight-desc">Grade G borrower default rate despite 27.49% average interest rates — suggesting pricing model underestimates actual credit risk</div>
+        <div class="insight-source">Source: Lending Club 2007-2018 · 2.26M records</div>
+      </div>
+      <div class="insight-card" style="border-left-color: var(--orange);">
+        <div class="insight-num" style="color: var(--orange);">55%</div>
+        <div class="insight-desc">California home improvement loan applications denied in 2023 — potential fair lending pattern under HMDA regulatory requirements</div>
+        <div class="insight-source">Source: HMDA California 2023 · 962K applications</div>
+      </div>
+      <div class="insight-card" style="border-left-color: var(--teal);">
+        <div class="insight-num" style="color: var(--teal);">$28M</div>
+        <div class="insight-desc">Grade A borrower defaults despite 7.14% interest rates and 18.16% DTI — flagged as potential grade migration risk or systematic underwriting gap</div>
+        <div class="insight-source">Source: Lending Club Gold layer analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">Tech stack</h2>
+    <p class="section-desc">15 years of production SQL Server DBA experience combined with modern Azure Data Engineering and AI capabilities.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-category">Databricks & Delta Lake</div>
+        <ul class="skill-list">
+          <li>PySpark notebooks & Lakeflow Jobs</li>
+          <li>Unity Catalog governance</li>
+          <li>Delta Lake CDC & time travel</li>
+          <li>Streaming with AvailableNow trigger</li>
+          <li>AI/BI dashboards</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Azure Data Factory</div>
+        <ul class="skill-list">
+          <li>Mapping Data Flows (Bronze/Silver/Gold)</li>
+          <li>Self-Hosted Integration Runtime</li>
+          <li>Key Vault Managed Identity</li>
+          <li>ForEach & Master/Branch patterns</li>
+          <li>GitHub CI/CD & Azure Monitor</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">SQL Server & Azure SQL</div>
+        <ul class="skill-list">
+          <li>Always On Availability Groups</li>
+          <li>Azure SQL Managed Instance</li>
+          <li>DMS, LRS, Azure Migrate</li>
+          <li>Performance tuning & DMVs</li>
+          <li>TDE, backup encryption, RBAC</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">AI & Automation</div>
+        <ul class="skill-list">
+          <li>Claude API tool-use agent</li>
+          <li>PowerShell ReAct loop</li>
+          <li>Anti-hallucination grounding</li>
+          <li>Terraform IaC provisioning</li>
+          <li>Prompt versioning & cost tracking</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Compliance & Security</div>
+        <ul class="skill-list">
+          <li>PCI DSS, SOX, FFIEC, HIPAA</li>
+          <li>Append-only audit logs</li>
+          <li>Dynamic Data Masking</li>
+          <li>Service account governance</li>
+          <li>Azure Key Vault secrets management</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-category">Cloud & DevOps</div>
+        <ul class="skill-list">
+          <li>Azure VM, ADLS Gen2, Storage</li>
+          <li>GitHub source control & CI/CD</li>
+          <li>PowerShell & dbatools automation</li>
+          <li>AWS RDS, EC2, CloudFormation</li>
+          <li>Azure Monitor & Log Analytics KQL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background: var(--gray-50);">
+  <div class="section-inner">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-desc">Microsoft Azure certified with active pursuit of Fabric and AI engineering credentials.</p>
+
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">AZ-104</div>
+          <div class="cert-full">Azure Administrator Associate</div>
+          <span class="cert-status status-held">Held</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">DP-300</div>
+          <div class="cert-full">Azure Database Administrator Associate</div>
+          <span class="cert-status status-held">Held</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">AZ-305</div>
+          <div class="cert-full">Azure Solutions Architect Expert</div>
+          <span class="cert-status status-held">Held</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎯</div>
+        <div>
+          <div class="cert-name">DP-700</div>
+          <div class="cert-full">Fabric Data Engineer Associate</div>
+          <span class="cert-status status-progress">In Progress</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎯</div>
+        <div>
+          <div class="cert-name">DP-600</div>
+          <div class="cert-full">Fabric Analytics Engineer Associate</div>
+          <span class="cert-status status-progress">In Progress</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎯</div>
+        <div>
+          <div class="cert-name">AI-103</div>
+          <div class="cert-full">Azure AI Engineer Associate</div>
+          <span class="cert-status status-progress">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="section-label" style="color: rgba(255,255,255,0.6);">Get in touch</div>
+    <h2 class="section-title">Open to opportunities</h2>
+    <p class="section-desc">Senior Azure Data Engineer and Cloud DBA roles in banking and financial services. Open to full-time and contract. Remote and Bay Area hybrid.</p>
+
+    <div class="contact-links">
+      <a href="mailto:UshaKalecloudDba@gmail.com" class="contact-link">✉ UshaKalecloudDba@gmail.com</a>
+      <a href="https://linkedin.com/in/ushakale-56a336a" target="_blank" class="contact-link">in LinkedIn</a>
+      <a href="https://github.com/ushakaleclouddba-design/Azure-Data-Engineering-Portfolio" target="_blank" class="contact-link">⌥ GitHub Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Usha Kale</span> · sqlmigrateplus.com · San Ramon, CA · All rights reserved.</p>
+</footer>
+
+</body>
+</html>
